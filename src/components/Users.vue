@@ -36,6 +36,8 @@ const props = defineProps<{
 }>();
 
 console.log(props);
+console.log(props);
+console.log(props);
 </script>
 
 <style scoped>
