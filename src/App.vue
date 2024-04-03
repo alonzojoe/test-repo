@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Ref, ref, watch, computed, onMounted } from "vue";
+import { Ref, ref, onMounted } from "vue";
 import Users from "@/components/Users.vue";
 
 import { User } from "./types";
@@ -11,7 +11,9 @@ const users: Ref<User[]> = ref([]);
 const fetchUser = async () => {
   try {
     const response = await api.get<User[]>("/users");
-    users.value = response.data;
+    if (response.data.length > 0) {
+      users.value = response.data;
+    }
   } catch (error) {
     console.log(error);
   }
