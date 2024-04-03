@@ -1,11 +1,30 @@
 <script setup lang="ts">
-import { ref, watch, computed } from "vue";
+import { Ref, ref, watch, computed, onMounted } from "vue";
 import Users from "@/components/Users.vue";
+
+import { User } from "./types";
+
+import api from "@/api";
+
+const users: Ref<User[]> = ref([]);
+
+const fetchUser = async () => {
+  try {
+    const response = await api.get<User[]>("/users");
+    users.value = response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+onMounted(async () => {
+  await fetchUser();
+});
 </script>
 
 <template>
   <div>
-    <Users />
+    <Users :users="users" />
   </div>
 </template>
 
