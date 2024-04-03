@@ -36,10 +36,12 @@ const props = defineProps<{
 }>();
 
 console.log(props);
-console.log(props);
-console.log(props);
-console.log(props);
-console.log(props);
+console.table(props);
+console.table(props);
+console.table(props);
+console.table(props);
+console.table(props);
+console.table(props);
 </script>
 
 <style scoped>
